@@ -83,3 +83,67 @@ reset.addEventListener('click', ()=> {
 })
 
 updateStat()
+
+
+let n = 5, ns = [n], m = 500, s = 5;
+
+while(n*2<m) {
+    let tempn = 0;
+    ns.forEach(s => tempn+=s)
+    n=tempn;
+    ns.push(n*2<m? n : m-n)
+}
+
+console.log(ns.join(' '))
+
+const moneyHolder = document.querySelector('.money'),
+    betStartHolder = document.querySelector('.bet-start'),
+    currentBetHolder = document.querySelector('.current-bet'),
+    playRoundHolder = document.querySelector('.play-round'),
+    winBtn1 = document.querySelector('#win1'),
+    winBtn2 = document.querySelector('#win2'),
+    nextBtn = document.querySelector('#next')
+
+
+let index = 0, currentBet = 5, money = 500-currentBet, playRound = 1, lose = 0;
+
+function undateBets() {
+    moneyHolder.innerHTML = `Money: ${money}`
+    betStartHolder.innerHTML = `Bet-start: 5`
+    currentBetHolder.innerHTML = `Current bet: ${currentBet}`
+    playRoundHolder.innerHTML = `Round: ${playRound}`
+}
+
+undateBets()
+
+
+nextBtn.addEventListener('click', ()=> {
+    index++;
+    currentBet = ns[index];
+    money -= currentBet;
+    lose+=currentBet;
+    playRound++;
+    undateBets()
+})
+
+winBtn1.addEventListener('click', ()=> {
+    money += (currentBet*2) - 5;
+    lose-=(currentBet*2);
+    playRound=1;
+    index = 0;
+    currentBet = ns[index];
+
+
+    undateBets()
+})
+
+winBtn2.addEventListener('click', ()=> {
+    money += (currentBet*3);
+    lose-=(currentBet*3);
+    money-=5
+    playRound=1;
+    index = 0;
+    currentBet = ns[index];
+
+    undateBets()
+})

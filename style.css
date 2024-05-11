@@ -86,6 +86,26 @@ body {
 #green { background-color: #05FF00; }
 #pink { background-color: #FF28C3; }
 
+
+.bets {
+    margin-top: 5rem;
+
+    #win2 {
+        background: gold;
+    }
+
+    #next {
+        background-color: red;
+    }
+}
+
+.stats {
+    padding: 1rem;
+    border: 2px solid black;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 660px) {
     .colors {
         width: 100%;
